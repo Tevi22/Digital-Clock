@@ -168,5 +168,47 @@ except:
                         timer_reset.pack(anchor='center')
 
                         #Add timmer counter function#
+                        #operators#
+                        timer_counter_num = 66600
+                        timer_running = False
+
+                        #The following code will be called by the timer buttons#
+
+                        def timer(work):
+                                if work == 'start':
+                                        global timer_running, timer_counter_num
+                                        timer_running=True
+                                        if timer_counter_num == 66600:
+                                                timer_time_str = timer_get_entry.get()
+                                                hours,minutes,seconds=timer_time_str.split(':')
+                                                minutes = int(minutes) + (int(hours) * 60)
+                                                seconds = int(seconds) + (minutes * 60)
+                                                timer_counter_num= timer_counter_num + seconds
+                                            timer_counter(timer_label)
+                                            timer_start.config(state='disabled')
+                                            timer_stop.config(state='enabled')
+                                            timer_reset.config(state='enabled')
+                                            timer_get_entry.delete(0,END)
+                                        elif work == 'stop':
+                                             timer_runniing=False
+                                             timer_start.config(state='enabled')
+                                             timer_stop.config(state='disabled')
+                                             timer_reset.config(state='enabled')
+                                        elif work == 'reset':
+                                                timer_runniing=False
+                                                timer_counter_num=66600
+                                                timer_start.config(state='enabled')
+                                                timer_stop.config(state='disabled')
+                                                timer_reset.config(state='disabled')
+                                                timer_get_entry.config(state='enabled')
+                                                timer_label.config(text= 'Timer')        
+                                             
+                        # In this Function, If the work is start → It gets Timer entry text and format it and then set Timer counter
+                        #  to the formatted text and calls Timer counter and set Timer running to ‘True’. If it is Stop → It set timer running to ‘False’. 
+                        # If It is Reset → It set Counter num to 66600 or 0 and running to ‘False’
+
+                        #Next starting the clock and tkinter window.
+
+
 
 
