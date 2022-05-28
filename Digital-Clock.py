@@ -208,6 +208,9 @@ except:
                         # If It is Reset → It set Counter num to 66600 or 0 and running to ‘False’
 
                         #Next starting the clock and tkinter window.
+                        clock()
+                        window.mainloop()
+                        
 
 
 
