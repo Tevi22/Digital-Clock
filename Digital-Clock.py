@@ -151,5 +151,22 @@ except:
                                 stopwatch_stop.config(state='disabled')
                                 stopwatch_reset.config(state='disabled')
 
-                                #Making Timer#              
+                                #Making Timer button#  
+
+
+                        timer_get_entry = Entry(timer_tab, font = 'calibriri 15 bold')
+                        timer_get_entry.pack(anchor='center')
+                        timer_instructions_label = Lable(timer_tab, font = 'calibri 10 bold', text = 'Enter Timer Time. Eg -> 01:30:30, 01 -> Hour, 30  -> Minutes, 30 -> Seconds')
+                        timer_instructions_label.pack(anchor='s')
+                        time_label = Label(timer_tab, font='calibri 40 bold', text='Timer')
+                        timer_label.pack(anchor='center')
+                        timer_start = Button(timer_tab, text ='Start', command= lambda:timer('start'))
+                        timer_start.pack(anchor='center')
+                        timer_stop = Button(timer_tab, text ='Stop', state='disabled', command=lambda:timer('stop')) 
+                        timer_stop.pack(anchor='center')
+                        timer_reset = Button(timer_tab, text='Reset', state='disabled', command=lambda:timer('reset'))
+                        timer_reset.pack(anchor='center')
+
+                        #Add timmer counter function#
+
 
