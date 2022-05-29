@@ -1,20 +1,3 @@
-def execfile(file, glob=None, loc=None):
-    if glob is None:
-        import sys
-        glob = sys._getframe().f_back.f_globals
-    if loc is None:
-        loc = glob
-
-    # It seems that the best way is using tokenize.open(): http://code.activestate.com/lists/python-dev/131251/
-    import tokenize
-    stream = tokenize.open(file)  # @UndefinedVariable
-    try:
-        contents = stream.read()
-    finally:
-        stream.close()
-
-    #execute the script (note: it's important to compile first to have the filename set in debug mode)
-    exec(compile(contents+"\n", file, 'exec'), glob, loc)
 
 from tkinter import *  # importing modules#
 from tkinter.ttk import *
@@ -58,13 +41,14 @@ def alarm(): #Takes the time from the datetime module and format it#
           alarm_time = get_alarm_time_entry.get()
           alarm_time1, alarm_time2 = alarm_time.split('')
           alarm_hour, alarm_minutes = alarm_time1.split(':')
-          main_time1, main_time2 = main_time1.split('')
-          main_hour1, main_minutes = main_time1.splitt(':')
+          main_time1, main_time2 = main_time.split('')
+          main_hour, main_minutes = main_time1.splitt(':')
+
           #This checks if the time eneterd is equal or not. If equal it will 'Beep' according to OS#
-if main_time2 == 'PM':
+if main_time1 == 'PM':
         main_hour = str(int(main_hour1) - 12)
 else:
-                          main_hour = main_hour1
+                          main_time = main_hour1
 if int(alarm_hour) == int(main_hour) and int(alarm_minutes) == int(main_minutes) and main_time2 == alarm_time2:
                 for i in range(3):
                                alarm_status_label.config(text = 'Time Is Up')
